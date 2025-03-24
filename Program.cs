@@ -5,28 +5,31 @@ namespace EjercicioAbstraccionEjemplo
 {
     internal class Program
     {
-        public  void Main(string[] args)
+        static void Main(string[] args)
         {
-
+            
             televisor modelo1 = new televisor();
             modelo1.marca = "LG";
             modelo1.pantalla = "OLED";
             modelo1.pulgadas = 55;
+            
                
-            Console.WriteLine("nueva television agregada");
+            Console.WriteLine("Nueva television agregada " + "Marca " + modelo1.marca + ", Pantalla " + modelo1.pantalla + ", Pulgadas " + modelo1.pulgadas );
 
-            encenderTelevisor();
+            modelo1.encenderTelevisor();
 
-            Console.WriteLine("ingrese 0 si quiere apagar la television");
+            Console.WriteLine("ingrese 0 si quiere apagar la television ",modelo1.marca);
             int numero = int.Parse(Console.ReadLine());
+            if (numero != 0 ) {
             do
             {
                 Console.WriteLine("ingrese 0 si quiere apagar la television");
                 numero=int.Parse(Console.ReadLine());
 
             } while (numero != 0);
-          
-            apagarTelevisor();
+
+            }
+            modelo1.apagarTelevisor();
 
 
             indumentaria Buzo = new indumentaria();
@@ -35,11 +38,11 @@ namespace EjercicioAbstraccionEjemplo
             Buzo.material = "algodon";
             Buzo.precio = 30000;
 
-            listarPrenda();
+            Buzo.listarPrenda();
 
             Console.WriteLine("si quiere eliminar la prenda presione 0");
             int aux=int.Parse(Console.ReadLine());
-
+            if(aux != 0 ) {
             do {
                 Console.WriteLine("si quiere eliminar la prenda presione 0");
                 aux = int.Parse(Console.ReadLine());
@@ -49,9 +52,9 @@ namespace EjercicioAbstraccionEjemplo
 
 
             } while (aux != 0);
-
-            eliminarPrenda();
             
+            }
+            Buzo.eliminarPrenda();
         }
 
         public class indumentaria
@@ -60,18 +63,20 @@ namespace EjercicioAbstraccionEjemplo
             public string talle;
             public string material;
             public int precio;
+
+            public void listarPrenda()
+            {
+                Console.WriteLine("la prenda fue listada exitosamente " +" Marca " +  marca +", Talle " + talle + ", Material " + material +", Precio " + precio);
+            }
+
+
+            public void eliminarPrenda()
+            {
+                Console.WriteLine("la prenda fue eliminada exitosamente" );
+            }
         }
 
-        public void listarPrenda()
-        {
-           Console.WriteLine("la prenda fue listada exitosamente");
-        }
-
-
-        public void eliminarPrenda()
-        {
-            Console.WriteLine("la prenda fue eliminada exitosamente")  
-        }
+        
         
         
         public class televisor{
@@ -80,15 +85,17 @@ namespace EjercicioAbstraccionEjemplo
             public string pantalla;
             public int pulgadas;
 
+            public void encenderTelevisor()
+            {
+                Console.WriteLine("la television se encendio");
+            }
+            public void apagarTelevisor()
+            {
+                Console.WriteLine("la television se apago");
+            }
+
         }
-        public void encenderTelevisor()
-        {
-            Console.WriteLine("la television se encendio");
-        }
-        public void apagarTelevisor()
-        {
-            Console.WriteLine("la television se apago");
-        }
+        
     }
 
 
